@@ -1,0 +1,39 @@
+## groups for CS 354 Spring 2020
+Last Name
+First Name
+Username
+Student ID
+Last Access
+Availability
+Total [Total Pts: up to 1,145 Score]
+Weighted Total [Total Pts: up to 0 Percentage]
+
+# attendance 0.1
+Attendance [Total Pts: 10 Score]
+
+# labs 0.1
+Lab Week 2 [Total Pts: 5 Score]
+Lab Week 3 [Total Pts: 5 Score]
+Lab Week 4 [Total Pts: 5 Score]
+Lab Week 5 [Total Pts: 5 Score]
+Lab Week 6 [Total Pts: 5 Score]
+
+# homework 0.3
+Homework Week 2 [Total Pts: 100 Score]
+Homework Week 3 [Total Pts: 100 Score]
+Homework Week 4 [Total Pts: 100 Score]
+Homework Week 5 [Total Pts: 100 Score]
+Homework Week 6 [Total Pts: 100 Score]
+Homework Week 9 [Total Pts: 100 Score]
+Homework Week 10 [Total Pts: 100 Score]
+Homework Week 11 [Total Pts: 100 Score]
+Homework Week 12 [Total Pts: 100 Score]
+
+# midterm 0.25
+Midterm Exam [Total Pts: 100 Score]
+
+# final 0.25
+Final Exam [Total Pts: 100 Score]
+
+# bonus 0.02
+Bonus Points [Total Pts: 10 Score]
