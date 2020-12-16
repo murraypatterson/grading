@@ -233,8 +233,9 @@ if args.letter :
 # now we process the rows
 output = {}
 for row in rows :
-    last = row['Last Name'] # output indexed by last name
-    a = [row['First Name']]
+    last = row['Last Name']
+    user = row['Username'].lstrip('#')
+    a = [last, row['First Name'], user]
 
     course = float(0)
     for group in members :
@@ -265,15 +266,15 @@ for row in rows :
 
     a.append(percentage)
     a.append('{:.6f}'.format(course))
-
+    
     for group in groups :
         a.append('{:.6f}'.format(row[group]))
 
-    output[last] = a
+    output[last+user] = a # output indexed by lastname+username
 
 # print header
 sep = '\t' if args.tabs else ','
-print('Last', 'First', sep = sep, end = sep)
+print('Last', 'First', 'Username', sep = sep, end = sep)
 if args.letter :
     print('Letter', end = sep)
 
@@ -281,5 +282,5 @@ print('Grade', 'Course', sep = sep, end = sep)
 print(*('{:s}({:.3f})'.format(g, weight[g]) for g in groups), sep = sep)
 
 # output
-for last in sorted(output) :
-    print(last, *output[last], sep = sep)
+for lastuser in sorted(output) :
+    print(*output[lastuser], sep = sep)
