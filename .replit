@@ -1,1 +1,1 @@
-run = "python3 calculate-grade.py -g groups_131.txt -l fairfield_scheme.txt input.csv"
+run = "python3 calculate-grade.py -g groups_4330.txt input.csv"

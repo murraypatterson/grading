@@ -1,0 +1,44 @@
+## groups for CSC 4330 Fall 2020
+OrgDefinedId
+Username
+Last Name
+First Name
+Email
+Section
+Homework 1 Scheme Symbol
+Homework 2 Scheme Symbol
+Homework 3 Scheme Symbol
+Homework 4 Scheme Symbol
+Homework 5 Scheme Symbol
+Homework 6 Scheme Symbol
+Homework 7 Scheme Symbol
+Homework 8 Scheme Symbol
+Homework 9 Scheme Symbol
+Homework 10 Scheme Symbol
+Midterm Exam Scheme Symbol
+Final Exam Scheme Symbol
+Calculated Final Grade Numerator
+Calculated Final Grade Denominator
+Calculated Final Grade Scheme Symbol
+Adjusted Final Grade Numerator
+Adjusted Final Grade Denominator
+Adjusted Final Grade Scheme Symbol
+End-of-Line Indicator
+
+# homework 0.5
+Homework 1 Points Grade <Numeric MaxPoints:100>
+Homework 2 Points Grade <Numeric MaxPoints:100>
+Homework 3 Points Grade <Numeric MaxPoints:100>
+Homework 4 Points Grade <Numeric MaxPoints:100>
+Homework 5 Points Grade <Numeric MaxPoints:100>
+Homework 6 Points Grade <Numeric MaxPoints:100>
+Homework 7 Points Grade <Numeric MaxPoints:100>
+Homework 8 Points Grade <Numeric MaxPoints:100>
+Homework 9 Points Grade <Numeric MaxPoints:100>
+Homework 10 Points Grade <Numeric MaxPoints:100>
+
+# midterm 0.25
+Midterm Exam Points Grade <Numeric MaxPoints:100>
+
+# final 0.25
+Final Exam Points Grade <Numeric MaxPoints:100>
