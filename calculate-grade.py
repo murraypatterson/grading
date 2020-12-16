@@ -116,6 +116,34 @@ def process_groups(lines) :
     return universe, members, weight, drop, score
 
 #
+# process a letter grading scheme from a scheme file
+def process_scheme(handle) :
+
+    letter = {}
+    rows = csv.DictReader(handle)
+    a, b = rows.fieldnames
+
+    for row in rows :
+        letter[float(row[b])] = row[a]
+
+    return letter
+
+#
+# return a letter grade, given a grade and a letter grading scheme
+def letter_grade(letter, numerical) :
+
+    indices = sorted(letter)
+    index = indices[0]
+    for i in indices :
+
+        if numerical < i :
+            break
+
+        index = i
+
+    return letter[index]
+
+#
 # Parser
 #----------------------------------------------------------------------
 
@@ -147,6 +175,11 @@ parser.add_argument(
     '-g', '--groups', metavar = 'groups.txt',
     type = argparse.FileType('r'),
     help = 'file containing the weighted groups')
+
+parser.add_argument(
+    '-l', '--letter', metavar = 'scheme.csv',
+    type = argparse.FileType('r'),
+    help = 'add a column of letter grades according to scheme')
 
 parser.add_argument(
     '-t', '--tabs',
@@ -193,6 +226,10 @@ if args.groups :
 else :
     sys.exit(0)
 
+letter = None
+if args.letter :
+    letter = process_scheme(args.letter)
+
 # now we process the rows
 output = {}
 for row in rows :
@@ -222,17 +259,24 @@ for row in rows :
         course += row[group]
 
     # prepare remainder of the row of output
-    a.append(round(100 * course + 0.0000001)) # avoid bizarre round-downs
+    percentage = round(100 * course + 0.0000001) # avoid round-downs
+    if args.letter :
+        a.append(letter_grade(letter, percentage))
+
+    a.append(percentage)
     a.append('{:.6f}'.format(course))
 
     for group in groups :
         a.append('{:.6f}'.format(row[group]))
-        
+
     output[last] = a
 
 # print header
 sep = '\t' if args.tabs else ','
 print('Last', 'First', sep = sep, end = sep)
+if args.letter :
+    print('Letter', end = sep)
+
 print('Grade', 'Course', sep = sep, end = sep)
 print(*('{:s}({:.3f})'.format(g, weight[g]) for g in groups), sep = sep)
 
