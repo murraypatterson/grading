@@ -25,7 +25,7 @@ Adjusted Final Grade Denominator
 Adjusted Final Grade Scheme Symbol
 End-of-Line Indicator
 
-# homework 0.5
+# homework 0.5 drop 1
 Homework 1 Points Grade <Numeric MaxPoints:100>
 Homework 2 Points Grade <Numeric MaxPoints:100>
 Homework 3 Points Grade <Numeric MaxPoints:100>

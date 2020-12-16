@@ -14,7 +14,7 @@ import argparse
       header column two
       ...
 
-      # homework 0.5
+      # homework 0.5 drop 1
       Homework 1 Points Grade <Numeric MaxPoints:100>
       ...
 
@@ -27,7 +27,8 @@ import argparse
    starting with `#`, indicate groups of columns (e.g., "homework")
    which group together a set of items, each of which together have
    some weight towards the total grade for the course (e.g., 0.5, or
-   50% of the grade comes from homework)
+   50% of the grade comes from homework).  Note that "drop <number>"
+   is optional: it means "drop the lowest <number> items in group".
 
    Note that the set of columns comes from the csv, and so the
    expected way to get this groups file is to run
@@ -54,9 +55,10 @@ import argparse
 def process_groups(lines) :
 
     group = None
+    universe = set([]) # universal set of columns
     members = {} # members of a group
     weight = {} # weight of a group
-    universe = set([]) # universal set of columns
+    drop = {} # number to drop from a group
     score = {} # score for individual column
 
     for line in lines :
@@ -73,17 +75,24 @@ def process_groups(lines) :
 
             members[group] = []
             weight[group] = float(0)
-
+            drop[group] = 0
+            
             continue
 
         # new group
         if line.startswith('#') :
 
             # set current group (weight)
-            _, group, w = line.split()
+            _, group, w, *tail = line.split()
 
             members[group] = []
             weight[group] = float(w)
+
+            n = 0
+            if tail :
+                _, n = tail
+
+            drop[group] = int(n)
 
         # column of (the current) group
         else :
@@ -104,7 +113,7 @@ def process_groups(lines) :
     # weights should add up to 1
     assert round(sum(weight[g] for g in members), 6) == float(1)
 
-    return universe, members, weight, score
+    return universe, members, weight, drop, score
 
 #
 # Parser
@@ -163,11 +172,11 @@ if args.columns :
     sys.exit(0)
 
 # process the groups, if applicable
-universe, members, weight, score = None, None, None, None
+universe, members, weight, drop, score = None, None, None, None, None
 groups = []
 if args.groups :
 
-    universe, members, weight, score = process_groups(args.groups)
+    universe, members, weight, drop, score = process_groups(args.groups)
 
     # gather groups we want to report (i.e., those which carry weight)
     for group in members :
@@ -195,27 +204,30 @@ for row in rows :
         if group == 'header' : # blow by the header
             continue
 
-        total = float(0)
+        grades = []
         for column in members[group] :
             grade = float(0)
 
             g = row[column]
             if g : # column is not "" (not submitted)
-                grade = float(g)
+                grade = float(g) / score[column]
 
-            total += grade / score[column] # add normalized score
+            grades.append(grade)
 
-        # take average, weight it, and add it to final course grade
-        row[group] = total * weight[group] / len(members[group])
+        grades = sorted(grades)[drop[group]:] # drop the n lowest..
+        average = sum(grades) / len(grades)
+
+        # weight average, and add it to final course grade
+        row[group] = average * weight[group]
         course += row[group]
 
     # prepare remainder of the row of output
-    a.append(round(float(100) * course))
+    a.append(round(100 * course + 0.0000001)) # avoid bizarre round-downs
     a.append('{:.6f}'.format(course))
 
     for group in groups :
         a.append('{:.6f}'.format(row[group]))
-
+        
     output[last] = a
 
 # print header
