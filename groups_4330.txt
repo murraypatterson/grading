@@ -1,4 +1,5 @@
-## groups for CSC 4330 Fall 2020
+
+## groups for CSC 4330 Spring 2022
 OrgDefinedId
 Username
 Last Name
@@ -17,10 +18,6 @@ Homework 9 Scheme Symbol
 Homework 10 Scheme Symbol
 Midterm Exam Scheme Symbol
 Final Exam Scheme Symbol
-Final Grade Points Grade <Numeric MaxPoints:100>
-Final Grade Scheme Symbol
-Letter Grade Grade Symbol <Selectbox MaxPoints:10>
-Letter Grade Scheme Symbol
 Calculated Final Grade Numerator
 Calculated Final Grade Denominator
 Calculated Final Grade Scheme Symbol
