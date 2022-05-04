@@ -186,6 +186,11 @@ parser.add_argument(
     action = 'store_true',
     help = 'output in tab-separated format (default is CSV)')
 
+parser.add_argument(
+    '-u', '--human',
+    action = 'store_true',
+    help = 'for inputting a human-readable grades (csv) file')
+
 args = parser.parse_args()
 
 #
@@ -220,7 +225,8 @@ if args.groups :
     for column in columns :
         u.add(column.strip())
 
-    assert u == universe, universe ^ u
+    if not args.human :
+        assert u == universe, universe ^ u
 
 # w\o groups, no need to proceed..
 else :
@@ -230,12 +236,26 @@ letter = None
 if args.letter :
     letter = process_scheme(args.letter)
 
+# process human-readable form of grades
+if args.human :
+    d = {}
+
+    a, b = columns
+    for row in rows :
+        d[row[a] + ' Points Grade <Numeric MaxPoints:100>'] = row[b]
+
+    rows = [d]
+
 # now we process the rows
 output = {}
 for row in rows :
-    last = row['Last Name']
-    user = row['Username'].lstrip('#')
-    a = [last, row['First Name'], user]
+
+    last, user = 'last', 'user'
+    a = []
+    if not args.human :
+        last = row['Last Name']
+        user = row['Username'].lstrip('#')
+        a = [last, row['First Name'], user]
 
     course = float(0)
     for group in members :
@@ -246,7 +266,10 @@ for row in rows :
         for column in members[group] :
             grade = float(0)
 
-            g = row[column]
+            if args.human :
+                assert column in row, '\n\nAssessement "{}" is missing!'.format(column.split('Points')[0].strip())
+
+            g = row[column].strip()
             if g : # column is not "" (not submitted)
                 grade = float(g) / score[column]
 
@@ -272,15 +295,28 @@ for row in rows :
 
     output[last+user] = a # output indexed by lastname+username
 
-# print header
 sep = '\t' if args.tabs else ','
-print('Last', 'First', 'Username', sep = sep, end = sep)
+
+# prepare the header
+header = []
+if not args.human :
+    header += ['Last', 'First', 'Username']
+
 if args.letter :
-    print('Letter', end = sep)
+    header.append('Letter')
 
-print('Grade', 'Course', sep = sep, end = sep)
-print(*('{:s}({:.3f})'.format(g, weight[g]) for g in groups), sep = sep)
+header += ['Grade', 'Course']
+header += ['{:s}({:.3f})'.format(g, weight[g]) for g in groups]
 
-# output
+# dump human-readable output and exit
+if args.human :
+
+    for x,y in zip(header, a) :
+        print(x, y, sep = sep)
+
+    sys.exit(0)
+
+# print header and output
+print(*header, sep = sep)
 for lastuser in sorted(output) :
     print(*output[lastuser], sep = sep)
