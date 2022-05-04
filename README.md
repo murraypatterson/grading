@@ -18,7 +18,7 @@ will load a "repl" where you can click the "run" button to see the
 result.  To calculate your own grade, you can first replace
 `input_h.csv` with the contents of your grades from iCollege.  After
 this is done, you can click the "run" button again: the output should
-match that of your "Final Adjusted Grade" on iCollege
+match that of your "Final Grade" on iCollege
 
 ## Advanced usage
 
