@@ -1,2 +1,2 @@
 language = "python3"
-run = "python3 calculate-grade.py -g groups_4330.txt -l my_gsu_scheme.csv -ut input_h.csv"
+run = "bash run.bash"
