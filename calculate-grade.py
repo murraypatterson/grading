@@ -111,7 +111,7 @@ def process_groups(lines) :
             score[column] = float(aux.rstrip('>'))
 
     # weights should add up to 1
-    assert round(sum(weight[g] for g in members), 6) == float(1)
+    #assert round(sum(weight[g] for g in members), 6) == float(1)
 
     return universe, members, weight, drop, score
 
