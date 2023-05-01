@@ -23,8 +23,8 @@ click the "run" button again: the output should match that of your
 ## Advanced usage
 
 The precise commands that are run when the "run" button is clicked can
-be found in `run.bash`, where `groups.txt` is the grading scheme
-of your particular course, and `my_gsu_scheme.csv` is the numerical to
+be found in `run.bash`, where `groups.txt` is the grading scheme of
+your particular course, and `my_gsu_scheme.csv` is the numerical to
 letter grade conversion scheme (from the course syllabus).  The
 behavior of the "run" button is dictated by what is in the `.replit`
 file.
