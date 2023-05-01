@@ -244,6 +244,9 @@ if args.human :
     for row in rows :
         d[row[a] + ' Points Grade <Numeric MaxPoints:100>'] = row[b]
 
+        if row[a] == 'Bonus Assignment' :
+            d[row[a] + ' Points Grade <Numeric MaxPoints:5>'] = row[b]
+
     rows = [d]
 
 # now we process the rows
