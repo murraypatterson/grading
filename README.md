@@ -1,6 +1,6 @@
 # Grading
 
-Final grades were calculated by downloading the grades data from
+Final grades are calculated by downloading the grades data from
 iCollege in comma-separated values (CSV) format --- see `input.csv`
 for an example of what the grades data should look like --- and
 running the `calculate-grade.py` python script on it
