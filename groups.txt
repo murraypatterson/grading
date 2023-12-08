@@ -1,17 +1,24 @@
 
-## groups for CSC 4810 Spring 2023
+## groups for CSC 4330/6330 Fall 2023
 OrgDefinedId
 Username
 Last Name
 First Name
 Email
 Sections
-Homework 1 Scheme Symbol
-Homework 2 Scheme Symbol
+homework 1 Scheme Symbol
+homework 2 Scheme Symbol
+Homework 3 Points Grade <Numeric MaxPoints:100>
 Homework 3 Scheme Symbol
-Bonus Assignment Scheme Symbol
-Course Exam Scheme Symbol
-Course Project Scheme Symbol
+Homework 3(1) Scheme Symbol
+Homework 4 Scheme Symbol
+Homework 5 Scheme Symbol
+Midterm Exam Scheme Symbol
+Homework 6 Scheme Symbol
+Homework 7 Scheme Symbol
+Homework 8 Scheme Symbol
+Homework 9 Scheme Symbol
+Final Exam Scheme Symbol
 Calculated Final Grade Numerator
 Calculated Final Grade Denominator
 Calculated Final Grade Scheme Symbol
@@ -20,16 +27,19 @@ Adjusted Final Grade Denominator
 Adjusted Final Grade Scheme Symbol
 End-of-Line Indicator
 
-# homework 0.4 drop 1
-Homework 1 Points Grade <Numeric MaxPoints:100>
-Homework 2 Points Grade <Numeric MaxPoints:100>
-Homework 3 Points Grade <Numeric MaxPoints:100>
+# homework 0.5 drop 1
+homework 1 Points Grade <Numeric MaxPoints:100>
+homework 2 Points Grade <Numeric MaxPoints:100>
+Homework 3(1) Points Grade <Numeric MaxPoints:100>
+Homework 4 Points Grade <Numeric MaxPoints:100>
+Homework 5 Points Grade <Numeric MaxPoints:100>
+Homework 6 Points Grade <Numeric MaxPoints:100>
+Homework 7 Points Grade <Numeric MaxPoints:100>
+Homework 8 Points Grade <Numeric MaxPoints:100>
+Homework 9 Points Grade <Numeric MaxPoints:100>
 
-# bonus 0.05
-Bonus Assignment Points Grade <Numeric MaxPoints:5>
+# midterm 0.25
+Midterm Exam Points Grade <Numeric MaxPoints:100>
 
-# exam 0.2
-Course Exam Points Grade <Numeric MaxPoints:100>
-
-# project 0.4
-Course Project Points Grade <Numeric MaxPoints:100>
+# final 0.25
+Final Exam Points Grade <Numeric MaxPoints:100>
